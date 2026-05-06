@@ -13,12 +13,12 @@ Create Table Professor
     FOREIGN KEY (dept_num) REFERENCES Departments (dept_num)
 );
 
-CREATE TABLE Professor_Degrees 
+CREATE TABLE Professor_Degrees
 (
     ssn CHAR(9),
     degree VARCHAR(100),
     PRIMARY KEY (ssn, degree),
-    FOREIGN KEY (ssn) REFERENCES Professor(ssn)
+    FOREIGN KEY (ssn) REFERENCES Professor (ssn)
 );
 
 Create Table Departments
@@ -47,10 +47,9 @@ CREATE TABLE Student_Minors
 (
     cwid INT,
     dept_num INT,
-
     PRIMARY KEY (cwid, dept_num),
-    FOREIGN KEY (cwid) REFERENCES Student_record(cwid),
-    FOREIGN KEY (dept_num) REFERENCES Departments(dept_num)
+    FOREIGN KEY (cwid) REFERENCES Student_record (cwid),
+    FOREIGN KEY (dept_num) REFERENCES Departments (dept_num)
 );
 
 Create Table Course
@@ -60,6 +59,15 @@ Create Table Course
     textbook VARCHAR(100),
     units VARCHAR(10),
     FOREIGN KEY (dept_num) REFERENCES Departments (dept_num)
+);
+
+CREATE TABLE Course_Prereq
+(
+    course_num int,
+    prereq_course_num int,
+    PRIMARY KEY (course_num, prereq_course_num),
+    FOREIGN KEY (course_num) REFERENCES Course (course_num),
+    FOREIGN KEY (prereq_course_num) REFERENCES Course (course_num)
 );
 
 Create Table Sections
@@ -74,7 +82,7 @@ Create Table Sections
     meet_days VARCHAR(10),
     seat_num int,
     FOREIGN KEY (course_num) REFERENCES Course (course_num),
-    FOREIGN KEY (ssn) REFERENCES Proffesor(ssn)
+    FOREIGN KEY (ssn) REFERENCES Proffesor (ssn)
 );
 
 Create Table Enrollment
@@ -83,6 +91,6 @@ Create Table Enrollment
     course_num int,
     section_num int,
     PRIMARY KEY (cwid, course_num, section_num),
-    FOREIGN KEY (cwid) REFERENCES Student_record(cwid),
-    FOREIGN KEY (course_num) REFERENCES Course(course_num)
+    FOREIGN KEY (cwid) REFERENCES Student_record (cwid),
+    FOREIGN KEY (course_num) REFERENCES Course (course_num)
 );
