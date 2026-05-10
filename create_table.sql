@@ -1,19 +1,19 @@
 Create Table Departments
 (
     dept_num int PRIMARY KEY,
-    phone_num CHAR(10),
+    phone_num CHAR(15),
     office_location int,
-    chair_ssn CHAR(9),
+    chair_ssn CHAR(11)
 );
 
 
 
 Create Table Professor
 (
-    ssn CHAR(9) PRIMARY KEY,
+    ssn CHAR(11) PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    sex VARCHAR(50),
+    sex VARCHAR(1),
     street VARCHAR(100),
     city VARCHAR(50),
     prof_state CHAR(2),
@@ -30,7 +30,7 @@ ADD FOREIGN KEY (chair_ssn) REFERENCES Professor(ssn);
 
 CREATE TABLE Professor_degrees
 (
-    ssn CHAR(9),
+    ssn CHAR(11),
     degree VARCHAR(100),
     PRIMARY KEY (ssn, degree),
     FOREIGN KEY (ssn) REFERENCES Professor (ssn)
@@ -63,18 +63,18 @@ CREATE TABLE Student_minors
 
 Create Table Course
 (
-    course_num int Primary Key,
+    course_num INT Primary Key,
     title VARCHAR(50),
     textbook VARCHAR(100),
-    units VARCHAR(10),
+    units INT,
     dept_num INT,
     FOREIGN KEY (dept_num) REFERENCES Departments (dept_num)
 );
 
 CREATE TABLE Course_prereq
 (
-    course_num int,
-    prereq_course_num int,
+    course_num INT,
+    prereq_course_num INT,
     PRIMARY KEY (course_num, prereq_course_num),
     FOREIGN KEY (course_num) REFERENCES Course (course_num),
     FOREIGN KEY (prereq_course_num) REFERENCES Course (course_num)
@@ -82,14 +82,14 @@ CREATE TABLE Course_prereq
 
 Create Table Sections
 (
-    section_num int,
-    course_num int,
+    section_num INT,
+    course_num INT,
     ssn CHAR(9),
     start_time TIME,
     end_time TIME,
-    classroom int,
+    classroom INT,
     meet_days VARCHAR(10),
-    seat_num int,
+    seat_num INT,
     Primary key (section_num, course_num),
     FOREIGN KEY (course_num) REFERENCES Course (course_num),
     FOREIGN KEY (ssn) REFERENCES Professor (ssn)
@@ -97,9 +97,9 @@ Create Table Sections
 
 Create Table Enrollment_records
 (
-    cwid int,
-    course_num int,
-    section_num int,
+    cwid INT,
+    course_num INT,
+    section_num INT,
     grade VARCHAR(3),
     PRIMARY KEY (cwid, course_num, section_num),
     FOREIGN KEY (cwid) REFERENCES Student_record (cwid),
