@@ -1,5 +1,6 @@
 Create Table Departments
 (
+    dept_name VARCHAR(100),
     dept_num int PRIMARY KEY,
     phone_num CHAR(15),
     office_location int,
@@ -18,7 +19,7 @@ Create Table Professor
     city VARCHAR(50),
     prof_state CHAR(2),
     zip_code CHAR(5),
-    phone_num CHAR(10),
+    phone_num CHAR(15),
     title VARCHAR(50),
     salary DECIMAL(7, 2),
     dept_num int,
@@ -47,7 +48,7 @@ Create Table Student_record
     city VARCHAR(50),
     student_state CHAR(2),
     zip_code CHAR(5),
-    phone_num CHAR(10),
+    phone_num CHAR(15),
     major_dept_num INT,
     FOREIGN KEY (major_dept_num) REFERENCES Departments (dept_num)
 );
