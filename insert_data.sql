@@ -2,8 +2,8 @@
 INSERT INTO Departments 
 (dept_num, dept_name, phone_num, office_location, chair_ssn) 
 VALUES
-(10,'Computer Science' '217-555-20', 301, NULL),
-(20, 'Mathematics', '217-555-20', 210, NULL);
+(10,'Computer Science', '217-555-2010', 301, NULL),
+(20, 'Mathematics', '217-555-2020', 210, NULL);
 
 
 
