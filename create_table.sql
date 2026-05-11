@@ -85,7 +85,7 @@ Create Table Sections
 (
     section_num INT,
     course_num INT,
-    ssn CHAR(9),
+    ssn CHAR(11),
     start_time TIME,
     end_time TIME,
     classroom INT,
